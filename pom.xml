@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ru.itmo</groupId>
+  <artifactId>lab4</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+
+  <name>lab4</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+      <dependency>
+        <groupId>javax.ejb</groupId>
+        <artifactId>javax.ejb-api</artifactId>
+        <version>3.2.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>javax.persistence-api</artifactId>
+        <version>2.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>5.4.18.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>2.0.1.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.2.18</version>
+      </dependency>
+
+    </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.7.6</version>
+        <configuration>
+          <nodeVersion>v15.6.0</nodeVersion>
+          <npmVersion>7.5.4</npmVersion>
+          <workingDirectory>front/react-lab4</workingDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+          <!--                    <execution>-->
+          <!--                        <id>npm install</id>-->
+          <!--                        <goals>-->
+          <!--                            <goal>npm</goal>-->
+          <!--                        </goals>-->
+
+          <!--                        <phase>generate-resources</phase>-->
+
+          <!--                        <configuration>-->
+          <!--                            <arguments>install</arguments>-->
+          <!--                        </configuration>-->
+          <!--                    </execution>-->
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>package to war</id>
+            <goals>
+              <goal>exploded</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
